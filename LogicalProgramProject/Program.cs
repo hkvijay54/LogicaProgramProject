@@ -1,40 +1,23 @@
 ﻿using System;
-// Prime Number
+// Reverse a number
 
 
-class Prime
-{
-    public static int Logic(int a)
-    {
-        int i;
-        for( i = 2; i <= a-1;i++)
-        {
-            if(a%i == 0)
-            {
-                return 0;
-            }
-        }
-        if(i == a)
-        {
-            return 1;
-        }
-        return 0;
-    }
-}
+
 class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Enter a number");
-        int num = Convert.ToInt32(Console.ReadLine());
-        int res=Prime.Logic(num);
-        if(res == 0)
+        int num, temp, remainder, reverse = 0;
+        Console.WriteLine("Enter an integer");
+        num = Convert.ToInt32(Console.ReadLine());
+        temp = num;
+        while (num > 0)
         {
-            Console.WriteLine("{0} is not a prime nuber", num);
+            remainder = num % 10;
+            reverse = reverse * 10 + remainder;
+            num /= 10;
         }
-        else
-        {
-            Console.WriteLine("{0} is a prime number", num);
-        }
+        Console.WriteLine("Given number is = {0}", temp);
+        Console.WriteLine("Its reverse is = {0}", reverse);
     }
 }
