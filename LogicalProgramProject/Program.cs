@@ -1,5 +1,5 @@
 ﻿using System;
-// Fibonacci Series
+// Fibonacci Series.
 
 class Fibb
 {
