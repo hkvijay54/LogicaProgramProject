@@ -1,30 +1,27 @@
 ﻿using System;
-// Fibonacci Series.
+// Perfect Number
 
-class Fibb
-{
-    public static int FibCal(int n)
-    {
-        int a = 0;
-        int b = 1;
-        for(int i = 0; i < n; i++)
-        {
-            int temp = a;
-            a = b;
-            b = temp + b;
-        }
-        return a;
-    }
-}
 class Program
 {
     static void Main(string[] args)
     {
+        int sum = 0;
         Console.WriteLine("Enter a number");
-        int p = Convert.ToInt32(Console.ReadLine());
-        for(int i = 0; i < p; i++)
+        int num = Convert.ToInt32(Console.ReadLine());
+        for(int i = 1; i < num; i++)
         {
-            Console.Write("{0} ",Fibb.FibCal(i));
+            if(num%i==0)
+            {
+                sum = sum + i;
+            }
+        }
+        if(sum == num)
+        {
+            Console.WriteLine("Entered number is Perfect Number " + sum);
+        }
+        else
+        {
+            Console.WriteLine("Entered number not Perfect number "+sum);
         }
     }
 }
