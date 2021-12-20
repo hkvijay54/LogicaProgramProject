@@ -1,23 +1,23 @@
 ﻿using System;
-// Reverse a number
+using System.Diagnostics; // to use Stopwatch feature
+using System.Threading; // to perform multiple operations
 
-
+// Write a Stopwatch Program for measuring the time that elapses between
+//the start and end clicks
 
 class Program
 {
     static void Main(string[] args)
     {
-        int num, temp, remainder, reverse = 0;
-        Console.WriteLine("Enter an integer");
-        num = Convert.ToInt32(Console.ReadLine());
-        temp = num;
-        while (num > 0)
-        {
-            remainder = num % 10;
-            reverse = reverse * 10 + remainder;
-            num /= 10;
-        }
-        Console.WriteLine("Given number is = {0}", temp);
-        Console.WriteLine("Its reverse is = {0}", reverse);
+        Stopwatch stopw = new Stopwatch();
+        Console.WriteLine("Press any key to start");
+        Console.ReadLine();
+        Console.WriteLine("StopWatch started");
+        stopw.Start();
+        Console.WriteLine("Press Any key to stop when you want");
+        Console.ReadLine();
+        stopw.Stop();
+        Console.WriteLine("Stopped Stopwatch: Time elapsed: {0} ", stopw.Elapsed);
     }
-}
+}   
+    
