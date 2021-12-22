@@ -1,23 +1,33 @@
 ﻿using System;
-using System.Diagnostics; // to use Stopwatch feature
-using System.Threading; // to perform multiple operations
-
-// Write a Stopwatch Program for measuring the time that elapses between
-//the start and end clicks
+using System.Collections.Generic;
+using System.Threading.Tasks; // to perform multiple operations
+using System.Text;
+using System.Linq;
+// coupon code problem
 
 class Program
 {
     static void Main(string[] args)
     {
-        Stopwatch stopw = new Stopwatch();
-        Console.WriteLine("Press any key to start");
-        Console.ReadLine();
-        Console.WriteLine("StopWatch started");
-        stopw.Start();
-        Console.WriteLine("Press Any key to stop when you want");
-        Console.ReadLine();
-        stopw.Stop();
-        Console.WriteLine("Stopped Stopwatch: Time elapsed: {0} ", stopw.Elapsed);
+        var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        var stringChar = new char[6];
+        var random=new Random();
+
+        Console.WriteLine("How many tickets to generate?");
+        int number = Convert.ToInt32(Console.ReadLine());
+
+        while(number > 0)
+        {
+            for(int i = 0; i < stringChar.Length; i++)
+            {
+                stringChar[i]= chars[random.Next(chars.Length)];
+            }
+
+            var finalString=new String(stringChar);
+            Console.WriteLine(finalString);
+
+            number--;
+        }
     }
 }   
     
