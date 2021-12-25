@@ -6,29 +6,21 @@ using System.Linq;
 // coupon code problem
 
 
- class Temp
+class MonthlyPayment
 {
-    public static void Temp_Coversion()
+    public static void MonthlyInstallment(int p, int y, int R)
     {
-        Console.WriteLine("Please Select  any Choice");
-        Console.Write("1.Celcius to Fahrenheit  2.Fahrenheit to Celcius ");
-        int ch = Convert.ToInt32(Console.ReadLine());
-        switch (ch)
-        {
-            case 1:
-                Console.WriteLine("Enter the temperature in celcius");
-                double c = Convert.ToDouble(Console.ReadLine());
-                double f = (c * 9 / 5) + 32;
-                Console.WriteLine("Temperature in Fahrenheit=" + f);
-                break;
-            case 2:
-                Console.WriteLine("Enter the temperature in Fahrenheit");
-                double fr = Convert.ToDouble(Console.ReadLine());
-                double cel = (fr - 32) * 9 / 5;
-                Console.WriteLine("Temperature in Celcius=" + cel);
-                break;
-        }
+        //Console.Out.Write("\n Lone Ammount : " + p);
+        //Console.Out.Write("\n Monthly intrast rate : " + R);
+        //Console.Out.Write("\n Number of Monthly instalment : " + y);
+        double val = Convert.ToDouble(Math.Pow((1 + R), y));
 
+        double payment = Convert.ToDouble(R * val * p / (val - 1));
+
+
+        Console.Out.Write("\n Ammount paid back : " + payment * y);
+        Console.Out.Write("\n Intrast Ammount : " + ((payment * y) - p));
+        Console.Out.Write("\n Monthly Payment : " + (payment));
 
     }
 }
@@ -38,7 +30,14 @@ class Program
 {
     static void Main(string[] args)
     {
-        Temp.Temp_Coversion();
+        Console.Out.Write("\n Lone Ammount : ");
+        int loan = Convert.ToInt32(Console.ReadLine());
+        Console.Out.Write("\n Monthly intrast rate : ");
+        int interest = Convert.ToInt32(Console.ReadLine());
+        Console.Out.Write("\n Number of Monthly instalment : ");
+        int no_Of_Install = Convert.ToInt32(Console.ReadLine());
+
+        MonthlyPayment.MonthlyInstallment(loan, interest, no_Of_Install);
     }
 }   
     
