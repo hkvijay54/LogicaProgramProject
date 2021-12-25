@@ -8,45 +8,9 @@ using System.Linq;
 
 class NumberConversion
 {
-    public static void toBinary()
+    public static  int swapNibble(int x)
     {
-        string answer;
-        string result;
-
-        Console.Write("Input a Number : ");
-        answer = Console.ReadLine();
-
-        int num = Convert.ToInt32(answer);
-        result = "";
-        while (num > 1)
-        {
-            int remainder = num % 2;
-            result = Convert.ToString(remainder) + result;
-            num /= 2;
-        }
-        result = Convert.ToString(num) + result;
-        Console.WriteLine("Binary: {0}", result);
-        toDecimal(result);
-    }
-
-    public static void toDecimal(string result)
-    {
-        int num2 = int.Parse(result);
-
-
-        int decVal = 0, baseVal = 1;
-
-        while (num2 > 0)
-        {
-            //int r = num2%10;
-            int rem = num2 % 10;
-            decVal = decVal + rem * baseVal;
-            num2 = num2 / 10;
-            baseVal = baseVal * 2;
-
-        }
-        Console.WriteLine("decimal=" + decVal);
-
+        return ((x & 0x0F) << 4 | (x & 0xF0) >> 4);
     }
 }
 
@@ -55,7 +19,10 @@ class Program
 {
     static void Main(string[] args)
     {
-        NumberConversion.toBinary();
+        int bin = Convert.ToInt32(LogicalProgramProject.Binary.toBinary());
+        Console.WriteLine(bin);
+        int r = NumberConversion.swapNibble(bin);
+        Console.WriteLine(r);
     }
 }   
     
