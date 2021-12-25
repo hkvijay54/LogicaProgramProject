@@ -6,21 +6,46 @@ using System.Linq;
 // coupon code problem
 
 
-class MonthlyPayment
+class NumberConversion
 {
-    public static void MonthlyInstallment(int p, int y, int R)
+    public static void toBinary()
     {
-        //Console.Out.Write("\n Lone Ammount : " + p);
-        //Console.Out.Write("\n Monthly intrast rate : " + R);
-        //Console.Out.Write("\n Number of Monthly instalment : " + y);
-        double val = Convert.ToDouble(Math.Pow((1 + R), y));
+        string answer;
+        string result;
 
-        double payment = Convert.ToDouble(R * val * p / (val - 1));
+        Console.Write("Input a Number : ");
+        answer = Console.ReadLine();
+
+        int num = Convert.ToInt32(answer);
+        result = "";
+        while (num > 1)
+        {
+            int remainder = num % 2;
+            result = Convert.ToString(remainder) + result;
+            num /= 2;
+        }
+        result = Convert.ToString(num) + result;
+        Console.WriteLine("Binary: {0}", result);
+        toDecimal(result);
+    }
+
+    public static void toDecimal(string result)
+    {
+        int num2 = int.Parse(result);
 
 
-        Console.Out.Write("\n Ammount paid back : " + payment * y);
-        Console.Out.Write("\n Intrast Ammount : " + ((payment * y) - p));
-        Console.Out.Write("\n Monthly Payment : " + (payment));
+        int decVal = 0, baseVal = 1;
+
+        while (num2 > 0)
+        {
+            //int r = num2%10;
+            int rem = num2 % 10;
+            decVal = decVal + rem * baseVal;
+            num2 = num2 / 10;
+            baseVal = baseVal * 2;
+
+        }
+        Console.WriteLine("decimal=" + decVal);
 
     }
 }
@@ -30,14 +55,7 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.Out.Write("\n Lone Ammount : ");
-        int loan = Convert.ToInt32(Console.ReadLine());
-        Console.Out.Write("\n Monthly intrast rate : ");
-        int interest = Convert.ToInt32(Console.ReadLine());
-        Console.Out.Write("\n Number of Monthly instalment : ");
-        int no_Of_Install = Convert.ToInt32(Console.ReadLine());
-
-        MonthlyPayment.MonthlyInstallment(loan, interest, no_Of_Install);
+        NumberConversion.toBinary();
     }
 }   
     
