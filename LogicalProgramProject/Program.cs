@@ -6,53 +6,74 @@ using System.Linq;
 // coupon code problem
 
 
-class VendingMachine
+ class Calender
 {
-    // function to count and
-    // print currency notes
-    public static void countCurrency(int amount)
+    public static void Cal(int day, int month, int year)
     {
-        int[] notes = new int[]{ 2000, 500, 200, 100,
-                     50, 20, 10, 5, 1 };
-        int[] noteCounter = new int[9];
-
-        // count notes using Greedy approach
-        for (int i = 0; i < 9; i++)
+        if (month == 1)
         {
-            if (amount >= notes[i])
-            {
-                noteCounter[i] = amount / notes[i];
-                amount = amount - noteCounter[i] * notes[i];
-                Console.WriteLine(amount);
-            }
+            month = 13;
+            year--;
         }
-
-        // Print notes
-        Console.WriteLine("currency count ->");
-        int[] notes1 = new int[]{ 2000, 500, 200, 100,
-                     50, 20, 10, 5, 1 };
-        int largestnote;
-        for (int i = 0; i < 9; i++)
+        if (month == 2)
         {
-            if (noteCounter[i] != 0)
-            {
-                Console.WriteLine(notes[i] + " : " + noteCounter[i]);
-
-            }
-
+            month = 14;
+            year--;
         }
+        int q = day;
+        int m = month;
+        int k = year % 100;
+        int j = year / 100;
+        int h = q + 13 * (m + 1) / 5 + k + k / 4 + j / 4 + 5 * j;
+        h = h % 7;
+        switch (h)
+        {
+            case 0:
+                Console.WriteLine("Saturday");
+                break;
 
+            case 1:
+                Console.WriteLine("Sunday");
+                break;
 
+            case 2:
+                Console.WriteLine("Monday");
+                break;
+
+            case 3:
+                Console.WriteLine("Tuesday");
+                break;
+
+            case 4:
+                Console.WriteLine("Wednesday");
+                break;
+
+            case 5:
+                Console.WriteLine("Thursday");
+                break;
+
+            case 6:
+                Console.WriteLine("Friday");
+                break;
+        }
     }
 }
+
+
 class Program
 {
     static void Main(string[] args)
     {
-        Console.Write("Enter an Amount: ");
-        int num = Convert.ToInt32(Console.ReadLine());
-        VendingMachine.countCurrency(num);
-        
+        Console.Write("Enter an Day: ");
+        int d = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter an Month: ");
+        int m = Convert.ToInt32(Console.ReadLine());
+        Console.Write("Enter an Year: ");
+        int y = Convert.ToInt32(Console.ReadLine());
+
+        Calender.Cal(d, m, y);
+
+
     }
 }   
     
